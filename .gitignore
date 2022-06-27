@@ -1,3 +1,5 @@
 group_vars/server.yml
 hosts.yml
 *.retry
+
+.vscode
