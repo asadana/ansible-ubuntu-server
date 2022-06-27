@@ -1,0 +1,12 @@
+---
+- name: Reboot server
+  hosts: server
+  become: yes
+  roles:
+    - reboot
+
+  vars_prompt:
+    - name: Reboot confirmation
+      prompt: "Are you sure you want to reboot server (y/n)?"
+      private: no
+      default: "n"

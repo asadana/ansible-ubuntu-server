@@ -1,0 +1,5 @@
+---
+- name: restart server
+  ansible.builtin.reboot:
+    msg: "Rebooting server from Ansible"
+    reboot_timeout: 600
