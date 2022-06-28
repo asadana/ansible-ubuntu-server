@@ -1,0 +1,16 @@
+---
+- name: Install base packages
+  ansible.builtin.apt:
+    name: {{ item }}
+    state: installed
+    with_items:
+      - vim
+      - zsh
+
+- name: Install security packages
+  ansible.builtin.apt:
+    name: {{ item }}
+    state: installed
+    with_items:
+      - fail2ban
+      - ufw

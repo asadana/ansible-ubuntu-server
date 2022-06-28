@@ -1,0 +1,26 @@
+---
+- name: Setting up workspace
+  file:
+    path: "home/{{ ansible_user }}/workspace"
+    state: directory
+    owner: {{ ansible_user }}
+    group: {{ ansible_user }}
+    mode: "0755"
+
+- name: Git clone dotfiles
+  ansible.builtin.git:
+    repo: 'https://github.com/asadana/dotfiles.git'
+    dest: "home/{{ ansible_user }}/workspace/dotfiles"
+
+- name: Ensure permission for dotfiles is correct
+  file:
+    path: "home/{{ ansible_user }}/workspace"
+    state: directory
+    recurse: yes
+    owner: {{ ansible_user }}
+    group: {{ ansible_user }}
+
+- name: Change user shell to zsh
+  ansible.builtin.user:
+    name: {{ ansible_user }}
+    shell: /usr/bin/zsh

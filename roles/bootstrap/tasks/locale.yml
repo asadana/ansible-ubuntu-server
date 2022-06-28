@@ -1,0 +1,15 @@
+---
+- name: Generate locale
+  command: /usr/sbin/locale-gen {{ locale }}
+
+- name: Set locale
+  command: /usr/sbin/update-locale LANG={{ locale }} LC_ALL={{ locale }} LANGUAGE={{ language }}
+
+- name: Set timezone
+  command: /usr/bin/timedatectl set-timezone {{ timezone }}
+
+- name: Set timezone
+  command: /usr/bin/timedatectl set-ntp true
+
+- name: Set hostname
+  command: /usr/bin/hostnamectl set-hostname {{ hostname }}
